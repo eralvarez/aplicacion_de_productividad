@@ -1,0 +1,14 @@
+@import '~normalize.css';
+
+@import './app/styles/bootstrap.scss';
+@import './app/styles/custom/';
+
+
+html, body, #root {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
