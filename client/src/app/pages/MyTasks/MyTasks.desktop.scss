@@ -1,0 +1,13 @@
+
+
+.MyTasks {
+    .card-section {
+        display: flex;
+        align-items: center;
+        padding: 30px;
+
+        .CurrentTaskCard {
+            margin-right: 36px;
+        }
+    }
+}

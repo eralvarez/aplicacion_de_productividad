@@ -5,6 +5,7 @@ import {
     Typography,
     Button,
 } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
 
 import './Topbar.scss';
 
@@ -12,10 +13,6 @@ class Topbar extends React.Component {
 
     static defaultProps = {
         position: 'fixed'
-    }
-
-    constructor(props) {
-        super(props);
     }
 
     render() {
@@ -27,9 +24,9 @@ class Topbar extends React.Component {
                     </Typography>
                     <span className="spacer"></span>
                     <nav>
-                        <Button color="inherit">my tasks</Button>
-                        <Button color="inherit">analytics</Button>
-                        <Button color="inherit">archive</Button>
+                        <Button component={NavLink} activeClassName="active-link" color="inherit" exact to="/">my tasks</Button>
+                        <Button component={NavLink} activeClassName="active-link" color="inherit" to="/analytics">analytics</Button>
+                        <Button component={NavLink} activeClassName="active-link" color="inherit" to="/archive">archive</Button>
                     </nav>
                 </Toolbar>
             </AppBar>

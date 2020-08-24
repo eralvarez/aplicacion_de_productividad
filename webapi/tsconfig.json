@@ -1,0 +1,34 @@
+{
+    // "moduleResolution": "node",
+    "compilerOptions": {
+        // "rootDir": ".",
+        "baseUrl": ".",
+        // "outDir": "dist",
+        // "allowJs": false,
+        "module": "commonjs",
+        // "target": "es2017",
+        "sourceMap": true,
+        "paths": {
+            "@env/*": [
+                "src/env/*"
+            ],
+            "@shared/*": [
+                "src/shared/*"
+            ],
+            "@db/*": [
+                "src/db/*"
+            ],
+            "@api/*": [
+                "src/api/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "./node_modules/",
+        "**/*.spec.ts",
+        "dist/"
+    ]
+}

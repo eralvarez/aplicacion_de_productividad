@@ -2,4 +2,11 @@
     .spacer {
         flex: 1 1 auto;
     }
+
+    .active-link {
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+        border-bottom-style: solid;
+        border-radius: 0px;
+    }
 }

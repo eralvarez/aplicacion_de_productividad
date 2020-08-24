@@ -1,0 +1,43 @@
+
+
+.CurrentTaskCard {
+    width: 400px;
+    
+    .current-task-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 36px;
+
+        .title {
+            font-size: 20px;
+        }
+    }
+
+    .card-content {
+        .task {
+            &-title {
+                margin: 0px;
+                margin-bottom: 8px;
+            }
+            &-description {
+                margin: 0px;
+            }
+
+            &-timer-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px 0px 6px 0px;
+
+                .timer {
+                    font-size: 36px;
+                }
+            }
+        }
+    }
+
+    .card-footer {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,1435 @@
+{
+	"info": {
+		"_postman_id": "05dcf7fe-4ca0-4e58-85e6-787c68547df9",
+		"name": "WebapiGen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Generic",
+			"item": [
+				{
+					"name": "SELECT",
+					"item": [
+						{
+							"name": "All",
+							"item": [
+								{
+									"name": "All",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2601ad5c-7163-4db4-a0b8-19ce4df73281",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:4201/api/v1/user/all",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"user",
+												"all"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "1",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Query",
+							"item": [
+								{
+									"name": "Test 1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "40b460e2-6c38-4451-ad9c-506d497a7a2c",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should return json as response\", function () {\r",
+													"    try {\r",
+													"        JSON.parse(pm.response.text());\r",
+													"        pm.expect(true).to.eql(true);\r",
+													"    } catch (e) {\r",
+													"        pm.expect(true).to.eql(false);\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is an array\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(Array.isArray(jsonData)).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Has only 1 item as response after filters\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.length === 1).to.eql(true);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/query/test1?aidi=1",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"query",
+												"test1"
+											],
+											"query": [
+												{
+													"key": "aidi",
+													"value": "1"
+												}
+											]
+										},
+										"description": "Query example with alias, aidi = id"
+									},
+									"response": []
+								},
+								{
+									"name": "Test 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ed1f8a68-3434-46f2-b290-2dc7db94a1b2",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should return empty response\", function () {\r",
+													"    pm.expect(pm.response.text()).to.eql('');\r",
+													"});\r",
+													"\r",
+													"// pm.test(\"Doesn't have any items after wrong query\", function () {\r",
+													"//     var jsonData = pm.response.json();\r",
+													"//     pm.expect(jsonData.length === 0).to.eql(true);\r",
+													"// });\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/query/test1?aidi=1&firstName=ck",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"query",
+												"test1"
+											],
+											"query": [
+												{
+													"key": "aidi",
+													"value": "1"
+												},
+												{
+													"key": "firstName",
+													"value": "ck"
+												}
+											]
+										},
+										"description": "empty response when it didn't found an item"
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Single object response",
+							"item": [
+								{
+									"name": "Test 1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "17966961-c598-4883-a5fa-1f187a1c303b",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should return json as response\", function () {\r",
+													"    try {\r",
+													"        JSON.parse(pm.response.text());\r",
+													"        pm.expect(true).to.eql(true);\r",
+													"    } catch (e) {\r",
+													"        pm.expect(true).to.eql(false);\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is object\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(Array.isArray(jsonData)).to.eql(false);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/singleObjectResponse/test1?id=1",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"singleObjectResponse",
+												"test1"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										},
+										"description": "this should return a single item object, not an array"
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Order by",
+							"item": [
+								{
+									"name": "Test 1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "db691222-ee19-4df7-9670-f2243bf6fa84",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should return json as response\", function () {\r",
+													"    try {\r",
+													"        JSON.parse(pm.response.text());\r",
+													"        pm.expect(true).to.eql(true);\r",
+													"    } catch (e) {\r",
+													"        pm.expect(true).to.eql(false);\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is an array\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(Array.isArray(jsonData)).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Has id = 1 in the first item\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData[0].id === 1).to.eql(true);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/orderby/test1",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"orderby",
+												"test1"
+											]
+										},
+										"description": "Order by ID ASC"
+									},
+									"response": []
+								},
+								{
+									"name": "Test 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a16c85d0-e768-4f42-92f2-a4b81f079658",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should return json as response\", function () {\r",
+													"    try {\r",
+													"        JSON.parse(pm.response.text());\r",
+													"        pm.expect(true).to.eql(true);\r",
+													"    } catch (e) {\r",
+													"        pm.expect(true).to.eql(false);\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is an array\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(Array.isArray(jsonData)).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Has id = 10 in the first item\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData[0].id === 10).to.eql(true);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/orderby/test2",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"orderby",
+												"test2"
+											]
+										},
+										"description": "Order by Id DESC"
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Auth",
+							"item": [
+								{
+									"name": "Test 1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "07f85f69-b02f-46c5-81da-b50fdd7acf8a",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth",
+												"value": "vz6QINTKHf4j3ZTyJ5Z91SKNQCCcsPvHe3cGfG3b",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/auth/test1",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"auth",
+												"test1"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "1",
+													"disabled": true
+												}
+											]
+										},
+										"description": "require: true\r\nuserType: 'admin'"
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Fixed query",
+							"item": [
+								{
+									"name": "Test 1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "27d283fa-ca97-4eb4-8df4-0afe25e50ba5",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth",
+												"type": "text",
+												"value": "vz6QINTKHf4j3ZTyJ5Z91SKNQCCcsPvHe3cGfG3b"
+											}
+										],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/fixed-query/test1",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"fixed-query",
+												"test1"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "1",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "3a552ba0-0559-4d19-a7ea-7cbb20d0adc0",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth",
+												"type": "text",
+												"value": "vz6QINTKHf4j3ZTyJ5Z91SKNQCCcsPvHe3cGfG3b"
+											}
+										],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/fixed-query/test2",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"fixed-query",
+												"test2"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "1",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Cache",
+							"item": [
+								{
+									"name": "Test 1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c5fe19ed-e5da-4db3-9afa-cbb59910019f",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/cache/test1",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"cache",
+												"test1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Test 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2cb44717-6b21-46c5-b875-5c78194005e5",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/cache/test2",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"cache",
+												"test2"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e6641c5b-9253-4515-a81c-59d87664cf64",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "0486efbf-7aa8-4807-a568-504486abeb4f",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Join",
+							"item": [
+								{
+									"name": "Test 1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "81a25d72-f68d-42b4-817f-2245fee0d4b7",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should return json as response\", function () {\r",
+													"    try {\r",
+													"        JSON.parse(pm.response.text());\r",
+													"        pm.expect(true).to.eql(true);\r",
+													"    } catch (e) {\r",
+													"        pm.expect(true).to.eql(false);\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is an array\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(Array.isArray(jsonData)).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Has 10 items in response\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.length === 10).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should be order by id asc\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"\r",
+													"    for (let userIndex = 0; userIndex < jsonData.length; userIndex++) {\r",
+													"        const user = jsonData[userIndex];\r",
+													"        pm.expect(user.id).to.eql(userIndex + 1);\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should have JOINED userType property\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"\r",
+													"    pm.expect(typeof jsonData[0].userType).to.eql('object');\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/join/test1",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"join",
+												"test1"
+											]
+										},
+										"description": "Join with order by user.ID"
+									},
+									"response": []
+								},
+								{
+									"name": "Test 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "51956f75-11f9-4d06-adeb-bb131016628c",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should return json as response\", function () {\r",
+													"    try {\r",
+													"        JSON.parse(pm.response.text());\r",
+													"        pm.expect(true).to.eql(true);\r",
+													"    } catch (e) {\r",
+													"        pm.expect(true).to.eql(false);\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is an array\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(Array.isArray(jsonData)).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Has 10 items in response\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.length === 10).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should be order by id asc\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"\r",
+													"    for (let userIndex = 0; userIndex < jsonData.length; userIndex++) {\r",
+													"        const user = jsonData[userIndex];\r",
+													"        pm.expect(user.id).to.eql(userIndex + 1);\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should have JOINED userType property\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"\r",
+													"    pm.expect(typeof jsonData[0].userType).to.eql('object');\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/join/test2",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"join",
+												"test2"
+											]
+										},
+										"description": "Join with order by user.ID"
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Pagination and limits",
+							"item": [
+								{
+									"name": "test 1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3df3d14-ed5d-4fdf-a4e8-4b53819508a2",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should return json as response\", function () {\r",
+													"    try {\r",
+													"        JSON.parse(pm.response.text());\r",
+													"        pm.expect(true).to.eql(true);\r",
+													"    } catch (e) {\r",
+													"        pm.expect(true).to.eql(false);\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is an array\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(Array.isArray(jsonData)).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Has 4 items in response\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.length === 4).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should be order by id asc\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"\r",
+													"    for (let userIndex = 0; userIndex < jsonData.length; userIndex++) {\r",
+													"        const user = jsonData[userIndex];\r",
+													"        pm.expect(user.id).to.eql(userIndex + 1);\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should have JOINED userType property\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"\r",
+													"    pm.expect(typeof jsonData[0].userType).to.eql('object');\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:4201/api/v1/test/pagination_and_limits/test1",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"test",
+												"pagination_and_limits",
+												"test1"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "2",
+													"disabled": true
+												},
+												{
+													"key": "limit",
+													"value": "2",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "test 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "48ac6fbf-08a9-4e35-8cc8-343ccc95fb4f",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should return json as response\", function () {\r",
+													"    try {\r",
+													"        JSON.parse(pm.response.text());\r",
+													"        pm.expect(true).to.eql(true);\r",
+													"    } catch (e) {\r",
+													"        pm.expect(true).to.eql(false);\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is an array\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(Array.isArray(jsonData)).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Has 2 items in response\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.length === 2).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should be order by id asc\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"\r",
+													"    for (let userIndex = 0; userIndex < jsonData.length; userIndex++) {\r",
+													"        const user = jsonData[userIndex];\r",
+													"        pm.expect(user.id).to.eql(userIndex + 3);\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should include ID 3 and 4\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"\r",
+													"    for (let userIndex = 3; userIndex < jsonData.length; userIndex++) {\r",
+													"        const user = jsonData[userIndex];\r",
+													"        if (user.id === 3 || user.id === 4) {\r",
+													"            pm.expect(true).to.eql(true);\r",
+													"        }\r",
+													"    }\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Should have JOINED userType property\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"\r",
+													"    pm.expect(typeof jsonData[0].userType).to.eql('object');\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:4201/api/v1/comp1/project1/test/pagination_and_limits/test1?page=2&limit=2",
+											"host": [
+												"localhost"
+											],
+											"port": "4201",
+											"path": [
+												"api",
+												"v1",
+												"comp1",
+												"project1",
+												"test",
+												"pagination_and_limits",
+												"test1"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "2"
+												},
+												{
+													"key": "limit",
+													"value": "2"
+												}
+											]
+										},
+										"description": "custom page and limit"
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "CREATE",
+					"item": [
+						{
+							"name": "Single create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "vz6QINTKHf4j3ZTyJ5Z91SKNQCCcsPvHe3cGfG3b",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"lastName\": \"alvxxx\",\r\n    \"email\": \"x@y.com\",\r\n    \"type\": \"normal\",\r\n    \"password\": \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4201/api/v1/test/create-user/test1",
+									"host": [
+										"localhost"
+									],
+									"port": "4201",
+									"path": [
+										"api",
+										"v1",
+										"test",
+										"create-user",
+										"test1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Single create with special form props",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth",
+										"type": "text",
+										"value": "vz6QINTKHf4j3ZTyJ5Z91SKNQCCcsPvHe3cGfG3b"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"erick\",\r\n    \"email\": \"x@y.com\",\r\n    \"type\": \"normal\",\r\n    \"password\": \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4201/api/v1/test/create-user/test3",
+									"host": [
+										"localhost"
+									],
+									"port": "4201",
+									"path": [
+										"api",
+										"v1",
+										"test",
+										"create-user",
+										"test3"
+									]
+								},
+								"description": "using:\r\n$user\r\n$randomString\r\n$md5\r\n$hash"
+							},
+							"response": []
+						},
+						{
+							"name": "Multiple create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "vz6QINTKHf4j3ZTyJ5Z91SKNQCCcsPvHe3cGfG3b",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"lastName\": \"alv3\",\r\n        \"email\": \"x3@y3.com\",\r\n        \"type\": \"normal\",\r\n        \"password\": \"password1\"\r\n    },\r\n    {\r\n        \"lastName\": \"alv4\",\r\n        \"email\": \"x4@y4.com\",\r\n        \"type\": \"admin\",\r\n        \"password\": \"password2\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4201/api/v1/test/create-user/test2",
+									"host": [
+										"localhost"
+									],
+									"port": "4201",
+									"path": [
+										"api",
+										"v1",
+										"test",
+										"create-user",
+										"test2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "UPDATE",
+					"item": [
+						{
+							"name": "Normal update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-auth",
+										"type": "text",
+										"value": "vz6QINTKHf4j3ZTyJ5Z91SKNQCCcsPvHe3cGfG3b"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"alv1\",\r\n    \"lastName\": \"alv2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4201/api/v1/test/update-user/test1/1",
+									"host": [
+										"localhost"
+									],
+									"port": "4201",
+									"path": [
+										"api",
+										"v1",
+										"test",
+										"update-user",
+										"test1",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Normal update with fixedQuery",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-auth",
+										"type": "text",
+										"value": "vz6QINTKHf4j3ZTyJ5Z91SKNQCCcsPvHe3cGfG3b"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"alv1\",\r\n    \"lastName\": \"alv2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4201/api/v1/test/update-user/test2/1",
+									"host": [
+										"localhost"
+									],
+									"port": "4201",
+									"path": [
+										"api",
+										"v1",
+										"test",
+										"update-user",
+										"test2",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update with custom defaults",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-auth",
+										"type": "text",
+										"value": "vz6QINTKHf4j3ZTyJ5Z91SKNQCCcsPvHe3cGfG3b"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"alv1\",\r\n    \"lastName\": \"alv2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4201/api/v1/test/update-user/test3/1",
+									"host": [
+										"localhost"
+									],
+									"port": "4201",
+									"path": [
+										"api",
+										"v1",
+										"test",
+										"update-user",
+										"test3",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "91bf62e3-80e8-4d5b-8d4a-44bc70626ac3",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "592f6373-ccde-4456-adc8-7ff143078e6e",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Simple ID delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-auth",
+										"value": "vz6QINTKHf4j3ZTyJ5Z91SKNQCCcsPvHe3cGfG3b",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4201/api/v1/test/delete-user/test1/2",
+									"host": [
+										"localhost"
+									],
+									"port": "4201",
+									"path": [
+										"api",
+										"v1",
+										"test",
+										"delete-user",
+										"test1",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fixed query delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-auth",
+										"type": "text",
+										"value": "vz6QINTKHf4j3ZTyJ5Z91SKNQCCcsPvHe3cGfG3b"
+									}
+								],
+								"url": {
+									"raw": "localhost:4201/api/v1/test/delete-user/test2/5",
+									"host": [
+										"localhost"
+									],
+									"port": "4201",
+									"path": [
+										"api",
+										"v1",
+										"test",
+										"delete-user",
+										"test2",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Auth",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"erick.alvarez@live.com\",\r\n    \"password\": \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4201/api/v1/user/auth",
+									"host": [
+										"localhost"
+									],
+									"port": "4201",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"auth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Validate token",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4201/api/v1/user/auth/d8080aaf72b6f1bc4a79419c93508a81da8e14b2f47a875994eba945b840cfbdc3bffc0c0e30e404",
+									"host": [
+										"localhost"
+									],
+									"port": "4201",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"auth",
+										"d8080aaf72b6f1bc4a79419c93508a81da8e14b2f47a875994eba945b840cfbdc3bffc0c0e30e404"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Health check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "44a59a80-6d80-4fd2-8e82-9f822aa315a0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Should return json as response\", function () {\r",
+							"    try {\r",
+							"        JSON.parse(pm.response.text());\r",
+							"        pm.expect(true).to.eql(true);\r",
+							"    } catch (e) {\r",
+							"        pm.expect(true).to.eql(false);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status should be 'True'\", function () {\r",
+							"    var data = pm.response.json();\r",
+							"    pm.expect(data.status).to.eql(true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth",
+						"value": "kcUKEGuUme9EnF8SEP9v9U4dKfwP5d4UEjv6jgZbx",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:4201/api/v1/health-check",
+					"host": [
+						"localhost"
+					],
+					"port": "4201",
+					"path": [
+						"api",
+						"v1",
+						"health-check"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

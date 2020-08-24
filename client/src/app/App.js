@@ -3,28 +3,40 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
 } from 'react-router-dom';
 
 import './App.scss';
 import Topbar from './shared/components/Topbar/Topbar';
 import Header from './shared/components/Header/Header';
+import MyTasks from './pages/MyTasks/MyTasks';
 
 class App extends React.Component {
     render() {
         return (
-            <div className="App">
-                <div className="toolbar">
-                    <Topbar />
-                </div>
+            <Router>
+                <div className="App">
+                    <div className="toolbar">
+                        <Topbar />
+                    </div>
 
-                <main className="main">
-                    <Router>
-                        
-                    </Router>
-                    {/* <Header /> */}
-                </main>
-            </div>
+                    <main className="main">
+                        <Switch>
+                            <Route exact path="/">
+                                <MyTasks />
+                            </Route>
+                            <Route path="/analytics">
+                                <Header title="analytics" />
+                            </Route>
+                            <Route path="/archive">
+                                <Header title="archive" />
+                            </Route>
+                            <Route path="*">
+                                <MyTasks />
+                            </Route>
+                        </Switch>
+                    </main>
+                </div>
+            </Router>
         );
     }
 }
