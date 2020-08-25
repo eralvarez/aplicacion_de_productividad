@@ -1,4 +1,22 @@
 @import "custom/breakpoints";
 
 
-@include media-breakpoint-down(xs) {}
+@include media-breakpoint-down(xs) {
+    .AppBar {
+        .app-name {
+            display: none;
+        }
+    
+        .spacer {
+            display: none;
+        }
+    
+        .active-link {
+            border-bottom-width: 1px;
+            border-bottom-color: white;
+            border-bottom-style: solid;
+            border-radius: 0px;
+        }
+    }
+    
+}

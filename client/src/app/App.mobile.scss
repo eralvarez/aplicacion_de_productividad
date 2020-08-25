@@ -1,0 +1,9 @@
+@import "custom/breakpoints";
+
+@include media-breakpoint-down(xs) {
+    .App {
+        .toolbar {
+            height: 56px;
+        }
+    }
+}

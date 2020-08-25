@@ -1,4 +1,21 @@
 @import "custom/breakpoints";
 
+@include media-breakpoint-down(xs) {
+    .MyTasks {
+        .section,
+        .card-section {
+            padding: 16px;
+        }
 
-@include media-breakpoint-down(xs) {}
+        .card-section {
+            flex-direction: column;
+
+            .CurrentTaskCard,
+            .NewTaskCard {
+                margin-right: 0px;
+                width: 100%;
+                margin-bottom: 16px;
+            }
+        }
+    }
+}

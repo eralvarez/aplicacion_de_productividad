@@ -20,21 +20,13 @@ class NewTaskCard extends React.Component {
             openTaskDialog: false,
         };
 
-        this.handleOpenTaskDialog = this.handleOpenTaskDialog.bind(this);
-        this.handleOnCloseTaskDialog = this.handleOnCloseTaskDialog.bind(this);
+        this.changeDialogState = this.changeDialogState.bind(this);
     }
 
-    handleOpenTaskDialog() {
+    changeDialogState(isOpen) {
         this.setState({
-            openTaskDialog: true,
+            openTaskDialog: isOpen,
         });
-    }
-
-    handleOnCloseTaskDialog(value) {
-        this.setState({
-            openTaskDialog: false,
-        });
-        console.log(value);
     }
 
     render() {
@@ -42,11 +34,11 @@ class NewTaskCard extends React.Component {
             <Card className="NewTaskCard">
                 <CardContent className="card-content">
                     <h2 className="new-task-label">New task</h2>
-                    <IconButton color="primary" onClick={this.handleOpenTaskDialog}>
+                    <IconButton color="primary" onClick={() => this.changeDialogState(true)}>
                         <AddIcon fontSize="large" />
                     </IconButton>
 
-                    <CreateNewTaskDialog onClose={this.handleOnCloseTaskDialog} open={this.state.openTaskDialog} />
+                    <CreateNewTaskDialog onClose={() => this.changeDialogState(false)} open={this.state.openTaskDialog} />
                 </CardContent>
             </Card>
         );

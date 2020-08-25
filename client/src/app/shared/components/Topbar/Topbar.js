@@ -19,14 +19,14 @@ class Topbar extends React.Component {
         return (
             <AppBar position={this.props.position} className="AppBar">
                 <Toolbar>
-                    <Typography variant="h6">
+                    <Typography variant="h6" className="app-name">
                         Productivity app
                     </Typography>
                     <span className="spacer"></span>
                     <nav>
                         <Button component={NavLink} activeClassName="active-link" color="inherit" exact to="/">my tasks</Button>
                         <Button component={NavLink} activeClassName="active-link" color="inherit" to="/analytics">analytics</Button>
-                        <Button component={NavLink} activeClassName="active-link" color="inherit" to="/archive">archive</Button>
+                        <Button component={NavLink} activeClassName="active-link" color="inherit" to="/completed-tasks">completed tasks</Button>
                     </nav>
                 </Toolbar>
             </AppBar>

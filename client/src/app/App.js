@@ -7,8 +7,9 @@ import {
 
 import './App.scss';
 import Topbar from './shared/components/Topbar/Topbar';
-import Header from './shared/components/Header/Header';
 import MyTasks from './pages/MyTasks/MyTasks';
+import CompletedTasks from './pages/CompletedTasks/CompletedTasks';
+import Analytics from './pages/Analytics/Analytics';
 
 class App extends React.Component {
     render() {
@@ -25,10 +26,10 @@ class App extends React.Component {
                                 <MyTasks />
                             </Route>
                             <Route path="/analytics">
-                                <Header title="analytics" />
+                                <Analytics />
                             </Route>
-                            <Route path="/archive">
-                                <Header title="archive" />
+                            <Route path="/completed-tasks">
+                                <CompletedTasks />
                             </Route>
                             <Route path="*">
                                 <MyTasks />

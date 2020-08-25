@@ -11,11 +11,11 @@ import {
 import { Formik, Form } from 'formik';
 
 import tasksService from '../../../../../../shared/services/tasks/tasks.service';
-import './CreateNewTaskDialog.scss';
+import './EditTaskDialog.scss';
 import { dialogFormSchema } from './form.schema';
 
 
-class CreateNewTaskDialog extends React.Component {
+class EditTaskDialog extends React.Component {
 
     durationOptions = [
         {
@@ -75,13 +75,12 @@ class CreateNewTaskDialog extends React.Component {
         let taskDuration = (values.duration !== 0) ? values.duration : values.customMinutes * 60 + values.customSeconds;
         taskDuration = (taskDuration > 7200) ? 7200 : taskDuration;
 
-        const task = {
-            title: values.title,
+        const form = {
             description: values.description,
             duration: taskDuration,
         };
-        tasksService.create(task).then((task) => {
-            tasksService.getCreateTaskSubject().next(task);
+        tasksService.update(this.props.taskIdToEdit, form).then(() => {
+            tasksService.getEditTaskSubject().next(form);
             this.handleClose();
         }).catch((error) => {
             console.error(error);
@@ -95,14 +94,13 @@ class CreateNewTaskDialog extends React.Component {
                 fullWidth={true}
                 maxWidth="sm"
                 open={this.props.open}
-                className="CreateNewTaskDialog">
-                <DialogTitle>Set backup account</DialogTitle>
+                className="EditTaskDialog">
+                <DialogTitle>Update task</DialogTitle>
 
                 <DialogContent>
                     <Formik
                         initialValues={{
-                            title: 'title #1',
-                            description: 'description #1',
+                            description: '',
                             duration: this.durationOptions[0].value,
                             customMinutes: 0,
                             customSeconds: 0,
@@ -113,18 +111,6 @@ class CreateNewTaskDialog extends React.Component {
                             const { handleChange, values, errors, getFieldProps, touched } = props;
                             return (
                                 <Form>
-                                    <TextField
-                                        id="title"
-                                        name="title"
-                                        label="Title"
-                                        className="form-space"
-                                        fullWidth
-                                        InputLabelProps={this.inputLabelProps}
-                                        helperText={errors.title && touched.title ? errors.title : null}
-                                        error={errors.title && touched.title ? true : false}
-                                        {...getFieldProps('title')}
-                                    />
-    
                                     <TextField
                                         id="description"
                                         name="description"
@@ -196,7 +182,7 @@ class CreateNewTaskDialog extends React.Component {
                                             Cancel
                                         </Button>
                                         <Button variant="contained" color="primary" type="submit">
-                                            Subscribe
+                                            Update
                                         </Button>
                                     </DialogActions>
                                 </Form>
@@ -209,4 +195,4 @@ class CreateNewTaskDialog extends React.Component {
     }
 }
 
-export default CreateNewTaskDialog;
+export default EditTaskDialog;

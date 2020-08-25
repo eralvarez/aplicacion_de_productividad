@@ -1,14 +1,10 @@
 
 
-.MyTasks {
-    .section,
-    .card-section {
-        padding: 30px;
-    }
-
+.Analytics {
     .card-section {
         display: flex;
         align-items: center;
+        padding: 30px;
 
         .CurrentTaskCard {
             margin-right: 36px;

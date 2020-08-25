@@ -44,7 +44,6 @@ async function update(req: IRequest) {
     if (!formValid.error) {
         const updateResponse = await dbConnection(req.endpoint.config.table).update({
             ...formValid.value,
-            updatedAt: new Date(),
         }).where((builder) => {
             const textQuery = req.queryUrlParam;
 

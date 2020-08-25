@@ -1,0 +1,22 @@
+
+
+.EditTaskDialog {
+    
+    .form-space {
+        margin-bottom: 10px;
+
+        &:last-child {
+            margin-bottom: 0px;
+        }
+    }
+
+    .custom-minutes,
+    .custom-seconds {
+        width: 48px;
+        margin-right: 10px;
+    }
+
+    .block {
+        display: block;
+    }
+}

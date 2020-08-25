@@ -9,10 +9,6 @@ class Header extends React.Component {
         title: 'Here is a title',
         className: '',
     }
-    
-    componentDidMount() {
-        console.log(':)!');
-    }
 
     render() {
         const mainBoxClassName = `Header ${this.props.className}`;
