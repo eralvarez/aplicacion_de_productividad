@@ -6,8 +6,7 @@
   "scripts": {
     "build": "rm -rf dist/ && tsc --project tsconfig.json",
     "postxbuild": "tspath -f",
-    "startx": "node dist/src/server.js",
-    "start": "ts-node -r tsconfig-paths/register src/server.ts",
+    "start": "npm run db:dev && ts-node -r tsconfig-paths/register src/server.ts",
     "start:dev": "./node_modules/nodemon/bin/nodemon.js -e ts --exec \"npm run start\"",
     "start:prod": "npm run start",
     "db": "npm run db:sync && npm run db:seed",
